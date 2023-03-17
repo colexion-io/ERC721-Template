@@ -1,0 +1,20 @@
+{
+  "name": "colexion_erc_721_template",
+  "version": "0.0.1",
+  "description": "This is a ERC721 template for colexion",
+  "private": true,
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.2",
+    "@truffle/hdwallet-provider": "^2.1.8",
+    "dotenv": "^16.0.3",
+    "ganache-cli": "^6.12.2"
+  },
+  "scripts": {
+    "ganache": "yarn run ganache-cli -d --chainId 1337",
+    "test": "run-with-testrpc 'truffle test'",
+    "compile": "truffle compile",
+    "start": "truffle deploy",
+    "start-rinkeby": "truffle deploy --network rinkeby ",
+    "start-mumbai": "truffle deploy --network mumbai"
+  }
+}
