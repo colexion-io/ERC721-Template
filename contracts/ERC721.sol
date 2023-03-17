@@ -16,11 +16,17 @@ contract NFTTemplate is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnab
 
     uint public immutable MAX_MINT;
 
+    event URI(uint indexed uri, string message);
 
     constructor(uint256 maxMint) ERC721("NFTTemplate", "NTT") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         MAX_MINT = maxMint;
+    }
+
+    function setURI(uint _id, string memory _uri) external onlyRole(MINTER_ROLE) {
+        _setTokenURI(_id, _uri);
+        emit URI(_id, _uri);
     }
 
     function safeMint(address to, string memory uri) public onlyRole(MINTER_ROLE) {
